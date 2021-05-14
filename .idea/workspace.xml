@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4035053a-7f7e-4e3a-8a29-548838dde156" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../chaoyivision.github.io" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ChuangGanProjects/DCL-Release" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
   </component>
@@ -55,14 +56,9 @@
       <workItem from="1620744748418" duration="10336000" />
       <workItem from="1620784179040" duration="2095000" />
       <workItem from="1620793747389" duration="6214000" />
-      <workItem from="1620817728718" duration="627000" />
-    </task>
-    <task id="LOCAL-00003" summary="updates">
-      <created>1620747626129</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1620747626129</updated>
+      <workItem from="1620817728718" duration="659000" />
+      <workItem from="1620819527672" duration="10000" />
+      <workItem from="1620983312492" duration="1027000" />
     </task>
     <task id="LOCAL-00004" summary="updates">
       <created>1620747815848</created>
@@ -400,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620818353773</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="updates">
+      <created>1620818372554</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1620818372554</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
