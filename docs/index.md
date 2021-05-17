@@ -7,7 +7,76 @@ For our real-world SGG<sub>point</sub> studies, we manually checked and carefull
 
 To download our preprocessed <b>3DSSG-<font color="red">O27</font><font color="blue">R16</font></b> dataset, please follow the [instructions](https://sggpoint.github.io/#dataset) in our project page - or you could also derive these preprocessed data yourselves by following the step-by-step guidance below. 
 
-<b>Structure of our 3DSSG-O27R16.</b> There are mainly two kinds of files in our dataset, namely the dense 10-dim point cloud representitaons (<font color='green'><b>"<u>10dimPoints</u>"</b></font>) and our updated scene graph annotations (<font color='green'><b>"<u>SceneGraphAnnotation.json</u>"</b></font>). The dict structure of SceneGraphAnnotation.json will be summarized here when we have it avaiable soon. 
+<b>Structure of our 3DSSG-O27R16.</b> There are mainly two kinds of files in our dataset, namely the dense 10-dim point cloud representitaons (<font color='green'><b>"<u>10dimPoints</u>"</b></font>) and our updated scene graph annotations (<font color='green'><b>"<u>SceneGraphAnnotation.json</u>"</b></font>). Two preprocessing scripts (one for [point_cloud_sampling](https://github.com/chaoyivision/SGGpoint/blob/main/preprocessing/point_cloud_sampling.bash) and one for [scene_graph_remapping](https://github.com/chaoyivision/SGGpoint/blob/main/preprocessing/scene_graph_remapping.ipynb)) are available in this repository. The dict structure of <u>SceneGraphAnnotation.json</u> is summarized below:
+
+```
+SceneGraphAnnotation.json
+
+Structure -> {
+    ...,
+    scene_id: {
+    
+        'nodes': {
+            ..., 
+            obj_id: {
+                'instance_id': obj_id,
+                'instance_color': instance_color_encoding,
+                'rio27_enc': rio27_class_id, 
+                'rio27_name': rio27_class_name, 
+                'raw528_enc': raw528_class_id, 
+                'raw528_name': raw528_class_name, 
+            },
+            ...
+        },
+        
+        'edges': [
+            ...,
+            [src_obj_id, dst_obj_id, rel_class_id, rel_class_name],
+            ...
+        ]
+    },
+    ...
+}
+
+
+Example -> {
+    ...,
+    'f62fd5fd-9a3f-2f44-883a-1e5cf819608e': {
+    
+        'nodes': {
+            ...,
+            '11': {
+                'instance_id': 11,
+                'instance_color': '#c49c94',
+                'rio27_enc': 3, 
+                'rio27_name': 'cabinet', 
+                'raw528_enc': 68, 
+                'raw528_name': 'cabinet', 
+            }, 
+            '40': {
+                'instance_id': 40,
+                'instance_color': '#cd7864',
+                'rio27_enc': 12, 
+                'rio27_name': 'curtain', 
+                'raw528_enc': 129, 
+                'raw528_name': 'curtain', 
+            },
+            ...
+        },
+        
+        'edges': [
+            ...,
+            ['54', '8', '3', 'lying on'],
+            ['35', '8', '15', 'close by'],
+            ['20', '2', '14', 'spatial proximity'],
+            ['15', '4', '1', 'attached to'],
+            ...
+        ]
+    },
+    ...
+}
+```
+
 
 ## Dataset Preprocessing
 Below we would go through and explain each preprocessing step in generating our <b>3DSSG-<font color="red">O27</font><font color="blue">R16</font></b> dataset (for your information and interests only):
@@ -15,7 +84,7 @@ Below we would go through and explain each preprocessing step in generating our 
 ### A. <b>Point Cloud Sampling</b>
 <i>sampling 10-dim point cloud from obj files with mesh info. discarded</i>.
     
-1. [CloudCompare](http://www.cloudcompare.org/) software is adopted for sampling dense point cloud representations (PC<sub>9-dim</sub>) for scenes encoded within the raw <u>mesh.refined.obj</u> files. The [surface density](https://www.cloudcompare.org/doc/wiki/index.php?title=Mesh%5CSample_points) was set to 10k points per square unit, and the generated point clouds are of 9-dim (3-dim coordinate, 3-dim color, and 3-dim normal vector). Our corresponding batch sampling script is available in "preprocessing" folder under this repository.
+1. [CloudCompare](http://www.cloudcompare.org/) software is adopted for sampling dense point cloud representations (PC<sub>9-dim</sub>) for scenes encoded within the raw <u>mesh.refined.obj</u> files. The [surface density](https://www.cloudcompare.org/doc/wiki/index.php?title=Mesh%5CSample_points) was set to 10k points per square unit, and the generated point clouds are of 9-dim (3-dim coordinate, 3-dim color, and 3-dim normal vector). Our corresponding batch sampling script is available [here](https://github.com/chaoyivision/SGGpoint/blob/main/preprocessing/point_cloud_sampling.bash).
 2. Fetch a relatively sparse point cloud instance mask (IM<sub>4-dim</sub>) (with per-point instance_idx annotation) from the raw <u>labels.instances.annotated.ply</u> files.
 3. Overlap IM<sub>4-dim</sub> to PC<sub>9-dim</sub> to generate the desired <b>10-dim dense point cloud representations</b>, including the information of 3-dim coordinate (x, y, z), 3-dim color (R, G, B), 3-dim normal vector (Nx, Ny, Nz), and 1-dim instance_idx. Specifically, the instance annotation for each point from PC<sub>9-dim</sub> is decidied as the corresponding annotation of its nearest point from IM<sub>4-dim</sub>. These outputs are saved as <font color='green'><b>"<u>10dimPoints/[Scene_IDx].txt</u>"</b></font> in our <b>3DSSG-<font color="red">O27</font><font color="blue">R16</font></b> dataset.
 4. Some quick demo.
@@ -42,7 +111,8 @@ Below we would go through and explain each preprocessing step in generating our 
              <sup><b>2</b></sup>`Spatial Proximity`(after relabelling) - two objects have a spatial relationship (among `left`, `right`, `behind`, and `front`) with each other <u>AND</u> they share a support parent <u>AND</u> they have no higher-level relations (`?`) in between.
          4. Now we derive a multi-class structural relationship set for edge predictions.
        
-   3. <b>Recallibraition between node and edge annotations simultaneously.</b> 1) Remove all edges connected to <font color="purple"><i><b>invalid nodes</b></i></font>. 2) Iterate among edges, find the isolated nodes (with no edges connected to) for each scene, and remove them as well. Our scene graph annotations derived after this step are saved as <font color='green'><b>"<u>SceneGraphAnnotation.json</u>"</b></font> in our 3DSSG-O27R16 dataset.
+   3. <b>Recallibraition between node and edge annotations simultaneously.</b> 1) Remove all edges connected to <font color="purple"><i><b>invalid nodes</b></i></font>. 2) Iterate among edges, find the isolated nodes (with no edges connected to) for each scene, and remove them as well. 3) Apart from the small / paritial scenes ([list](http://campar.in.tum.de/files/3RScan/partial.txt)), there is one more special scene to be removed (i.e., 87e6cf79-9d1a-289f-845c-abe4deb8642f) who contains no elements after our above cleanings (see more details in our [scene_graph_remapping script](https://github.com/chaoyivision/SGGpoint/blob/main/preprocessing/scene_graph_remapping.ipynb)).
+      Our scene graph annotations derived after this step are saved as <font color='green'><b>"<u>SceneGraphAnnotation.json</u>"</b></font> in our 3DSSG-O27R16 dataset.
 
 ## Last Few Steps
 <i>Within dataloader.py</i> 
