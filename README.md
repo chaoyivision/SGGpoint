@@ -6,7 +6,7 @@ This repository contains a PyTorch implementation of the following paper:
 >
 > [Chaoyi Zhang](https://chaoyivision.github.io/), Jianhui Yu, [Yang Song](http://www.cse.unsw.edu.au/~ysong/), [Weidong Cai](https://www.sydney.edu.au/engineering/about/our-people/academic-staff/tom-cai.html)
 >
-> CVPR 2021
+> [CVPR 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Zhang_Exploiting_Edge-Oriented_Reasoning_for_3D_Point-Based_Scene_Graph_Analysis_CVPR_2021_paper.html)
 >
 > **Abstract** Scene understanding is a critical problem in computer vision. In this paper, we propose a 3D point-based scene graph generation (<b>SGG<sub>point</sub></b>) framework to effectively bridge perception and reasoning to achieve scene understanding via three sequential stages, namely scene graph construction, reasoning, and inference. Within the reasoning stage, an EDGE-oriented Graph Convolutional Network (<b>EdgeGCN</b>) is created to exploit multi-dimensional edge features for explicit relationship modeling, together with the exploration of two associated twinning interaction mechanisms between nodes and edges for the independent evolution of scene graph representations. Overall, our integrated SGG<sub>point</sub> framework is established to seek and infer scene structures of interest from both real-world and synthetic 3D point-based scenes. Our experimental results show promising edge-oriented reasoning effects on scene graph generation studies. We also demonstrate our method advantage on several traditional graph representation learning benchmark datasets, including the node-wise classification on citation networks and whole-graph recognition problems for molecular analysis.
 >
@@ -43,11 +43,13 @@ This repo. also contains Pytorch implementation of the following modules:
 If you find our data or project useful in your research, please cite:
 
 ```
-@inproceedings{SGGpoint,
-    title = {Exploiting Edge-Oriented Reasoning for 3D Point-based Scene Graph Analysis},
-    author = {Zhang, Chaoyi and Yu, Jianhui and Song, Yang and Cai, Weidong},
-    booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-    year = {2021}
+@InProceedings{SGGpoint,
+    author    = {Zhang, Chaoyi and Yu, Jianhui and Song, Yang and Cai, Weidong},
+    title     = {Exploiting Edge-Oriented Reasoning for 3D Point-Based Scene Graph Analysis},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2021},
+    pages     = {9705-9715}
 }
 ```
 #### Acknowledgments
