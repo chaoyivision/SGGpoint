@@ -46,7 +46,7 @@ If you find our data or project useful in your research, please cite:
 @InProceedings{SGGpoint,
     author    = {Zhang, Chaoyi and Yu, Jianhui and Song, Yang and Cai, Weidong},
     title     = {Exploiting Edge-Oriented Reasoning for 3D Point-Based Scene Graph Analysis},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
     year      = {2021},
     pages     = {9705-9715}
