@@ -34,7 +34,7 @@ This repo. also contains Pytorch implementation of the following modules:
 - [x] Preprocessing A: [10dimPoints](https://chaoyivision.github.io/SGGpoint/#a-point-cloud-sampling) & [batch script](https://github.com/chaoyivision/SGGpoint/blob/main/preprocessing/point_cloud_sampling.bash);
 - [x] Preprocessing B: [SceneGraphAnnotation.json](https://chaoyivision.github.io/SGGpoint/#b-updates-on-scene-graph-annotations) & [Prep. Script](https://github.com/chaoyivision/SGGpoint/blob/main/preprocessing/scene_graph_remapping.ipynb);
 - [x] dataloader's instructions (might be updated later [here](https://chaoyivision.github.io/SGGpoint/#last-few-steps));
-- [x] SubNetworks.py: Backbones (PointNet & DGCNN)， Tails (NodeMLP & EdgeMLP), edge feats. initialization func.;
+- [x] SubNetworks.py: Backbones (PointNet & DGCNN), Tails (NodeMLP & EdgeMLP), edge feats. initialization func.;
 - [x] EdgeGCN.py: CoreNetwork with two twinning attentions;
 - [ ] ...
 
