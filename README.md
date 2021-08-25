@@ -1,4 +1,4 @@
-# SGG<sub>point</sub>
+# Exploiting Edge-Oriented Reasoning for 3D Point-based Scene Graph Analysis (SGG<sub>point</sub>)
 
 This repository contains a PyTorch implementation of the following paper:
 
