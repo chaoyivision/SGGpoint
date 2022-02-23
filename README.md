@@ -36,7 +36,6 @@ This repo. also contains Pytorch implementation of the following modules:
 - [x] dataloader's instructions (might be updated later [here](https://chaoyivision.github.io/SGGpoint/#last-few-steps));
 - [x] SubNetworks.py: Backbones (PointNet & DGCNN), Tails (NodeMLP & EdgeMLP), edge feats. initialization func.;
 - [x] EdgeGCN.py: CoreNetwork with two twinning attentions;
-- [ ] ...
 
 ## Citation
 
