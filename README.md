@@ -1,4 +1,4 @@
-# SGG-Point
+# SGGpoint
 
 Official implementation of "Exploiting Edge-Oriented Reasoning for 3D Point-based Scene Graph Analysis", CVPR2021
 
