@@ -1,6 +1,7 @@
 # SGG-Point
 
 Official implementation of "Exploiting Edge-Oriented Reasoning for 3D Point-based Scene Graph Analysis", CVPR2021
+
 [[Paper]](https://arxiv.org/pdf/2103.05558.pdf) [[Supp.]](https://sggpoint.github.io/supplementary.pdf) [[Video]](https://sggpoint.github.io/#video)
 
 ![img](docs/teaser.png)
